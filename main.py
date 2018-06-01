@@ -13,6 +13,9 @@ ds = dc.get_dataset('data_audit.sales_info_kpis')
 def expect_SaleDate_range:
     return ds.expect_column_values_to_be_between('SaleDate', date(2004, 1, 1), date.today())
 
+# SELECT `SaleDate`, SUM(`GrandTotal`) AS GrandTotal from `data_audit.sales_info_kpis` GROUP BY `SaleDate` LIMIT 100
+# SELECT `SaleDate`, SUM(`Quantity`) AS Quantity from `data_audit.sales_info_kpis` GROUP BY `SaleDate` LIMIT 100
+
 def fullFn(ds):
     return {'success': True}
 
