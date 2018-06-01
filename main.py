@@ -1,3 +1,4 @@
+from datetime import date
 from sqlalchemy import create_engine
 import great_expectations as ge
 
@@ -8,6 +9,9 @@ def get_data_context(uri, credentials_path):
 
 dc = get_data_context('bigquery://level-4-yoga', 'key.json')
 ds = dc.get_dataset('data_audit.sales_info_kpis')
+
+def expect_SaleDate_range:
+    return ds.expect_column_values_to_be_between('SaleDate', date(2004, 1, 1), date.today())
 
 def fullFn(ds):
     return {'success': True}
